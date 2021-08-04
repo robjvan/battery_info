@@ -1,4 +1,4 @@
-name: battery_info
+name: battery_info_app
 description: Battery info app
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -11,6 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # battery_plus: ^1.1.0
+  glassmorphism_ui: ^0.2.0
+  battery_info: ^1.0.8
 
   # cupertino_icons: ^1.0.2
 
