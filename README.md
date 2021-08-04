@@ -1,16 +1,23 @@
-# battery_info
+# Battery Info
 
-A new Flutter project.
+<img width="300" height="200" src="https://i.stack.imgur.com/y9DpT.jpg">
 
-## Getting Started
+App description
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+- Cool feature 1
+<img width="150" height="100" src="https://i.stack.imgur.com/y9DpT.jpg"> <img width="150" height="100" src="https://i.stack.imgur.com/y9DpT.jpg">
+Ipsam distinctio atque sed consequuntur. Aut cumque pariatur tenetur cum reiciendis excepturi sint natus. Qui nihil modi quas assumenda dignissimos neque.
+<br>
+- Cool feature 2
+<img width="150" height="100" src="https://i.stack.imgur.com/y9DpT.jpg"> <img width="150" height="100" src="https://i.stack.imgur.com/y9DpT.jpg">
+Qui molestiae nemo omnis totam ipsam qui aliquid dolor quo. Neque perferendis aspernatur nihil ea quibusdam nulla sint. Excepturi id minus nam minus voluptatem ipsum velit nesciunt quo.
+<br>
+- Cool feature 3
+<img width="150" height="100" src="https://i.stack.imgur.com/y9DpT.jpg"> <img width="150" height="100" src="https://i.stack.imgur.com/y9DpT.jpg">
+Quo modi fugiat nesciunt magnam consequatur blanditiis mollitia. Minima voluptatem blanditiis eum numquam porro. Facere voluptate corrupti. Voluptatem unde blanditiis voluptas itaque velit enim. Voluptates velit odio nisi ut ut accusamus et. Ex ipsa omnis inventore beatae autem vel velit aliquam molestias.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Download
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Android](https://#) - [Windows](https://#) - [Linux](https://#) - [Website](https://#)
