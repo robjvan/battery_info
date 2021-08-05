@@ -11,27 +11,27 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # battery_plus: ^1.1.0
-  glassmorphism_ui: ^0.2.0
   battery_info: ^1.0.8
-
-  # cupertino_icons: ^1.0.2
+  syncfusion_flutter_gauges: ^19.2.51
 
 dev_dependencies:
-  # flutter_test:
-  #   sdk: flutter
 
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - assets/images/
+  assets:
+    - assets/images/
 
-  # fonts:
-  #   - family: Hero
-  #     fonts:
-  #       - asset: assets/fonts/Hero-Regular.ttf
-  #       - asset: assets/fonts/Hero-Italic.ttf
-  #         style: italic
-  #       - asset: assets/fonts/Hero-Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Hero
+      fonts:
+        - asset: assets/fonts/Hero-Regular.ttf
+        - asset: assets/fonts/Hero-Bold.ttf
+          weight: 700
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 700
