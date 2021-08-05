@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
-// import 'package:battery_plus/battery_plus.dart';
 import 'package:battery_info/battery_info_plugin.dart';
 import 'package:battery_info/enums/charging_status.dart';
 import 'package:battery_info/model/android_battery_info.dart';
-import 'package:battery_info/model/iso_battery_info.dart';
+
+import '/widgets/battery_level_widget.dart';
+import '/widgets/battery_health_widget.dart';
+import '/widgets/battery_status_widget.dart';
+import '/widgets/battery_temperature_widget.dart';
+import '/widgets/battery_voltage_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -12,72 +16,92 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // final Battery _battery = Battery();
-
   @override
   Widget build(BuildContext context) {
+    final double _sw = MediaQuery.of(context).size.width;
+    final double _sh = MediaQuery.of(context).size.height;
+    bool isDarkMode =
+        Theme.of(context).textTheme.bodyText1!.color == Colors.white;
+
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Theme.of(context).canvasColor,
+        title: Text(
+          'BATTERY INFO',
+          style: TextStyle(
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Hero',
+            color: isDarkMode ? Colors.white : Colors.black,
+          ),
+        ),
+      ),
+      backgroundColor: Theme.of(context).canvasColor,
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              StreamBuilder<AndroidBatteryInfo?>(
-                  stream: BatteryInfoPlugin().androidBatteryInfoStream,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Column(
-                        children: [
-                          Text("Voltage: ${(snapshot.data!.voltage)} mV"),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                              "Charging status: ${(snapshot.data!.chargingStatus.toString().split(".")[1])}"),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                              "Battery Level: ${(snapshot.data!.batteryLevel)} %"),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                              "Battery Capacity: ${(snapshot.data!.batteryCapacity! / 1000)} mAh"),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Text(
-                              "Current Now: ${(snapshot.data!.currentNow)! / 1000} mAh "),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          // Text(
-                          //     "Current Avg: ${(snapshot.data!.currentAverage)! / 1000} mAh "),
-                          // SizedBox(
-                          //   height: 20,
-                          // ),
-                          Text("Temperature: ${snapshot.data!.temperature} "),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          // Text("Scale: ${(snapshot.data!.scale)} "),
-                          // SizedBox(
-                          //   height: 20,
-                          // ),
-                          Text(
-                              "Remaining energy: ${-(snapshot.data!.remainingEnergy! * 1.0E-9)} Watt-hours,"),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          _getChargeTime(snapshot.data),
-                        ],
-                      );
-                    }
-                    return CircularProgressIndicator();
-                  })
-            ],
+        child: Container(
+          height: _sh,
+          width: _sw,
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          child: StreamBuilder<AndroidBatteryInfo?>(
+            stream: BatteryInfoPlugin().androidBatteryInfoStream,
+            builder: (BuildContext context,
+                AsyncSnapshot<AndroidBatteryInfo?> snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    BatteryLevelWidget(
+                      batteryLevel: snapshot.data!.batteryLevel,
+                    ),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BatteryHealthWidget(
+                          health: snapshot.data!.health,
+                          capacity: ((snapshot.data!.batteryCapacity! / 1000) /
+                                  (snapshot.data!.batteryLevel!) *
+                                  100)
+                              .toInt(),
+                        ),
+                        BatteryStatusWidget(
+                          chargingStatus: snapshot.data!.chargingStatus
+                              .toString()
+                              .split(".")[1],
+                          batteryLevel: snapshot.data!.batteryLevel,
+                          powerSource: snapshot.data!.pluggedStatus == 'unknown'
+                              ? 'Battery'
+                              : 'USB port',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        BatteryTemperatureWidget(
+                          currentNow: ((snapshot.data!.currentNow)! / 1000),
+                          temperature: snapshot.data!.temperature,
+                        ),
+                        BatteryVoltageWidget(voltage: snapshot.data!.voltage),
+                        SizedBox(
+                          height: 16,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    _getChargeTime(snapshot.data),
+                    SizedBox(
+                      height: 8,
+                    ),
+                  ],
+                );
+              }
+              return CircularProgressIndicator();
+            },
           ),
         ),
       ),
@@ -91,6 +115,12 @@ class _MyHomePageState extends State<MyHomePage> {
           : Text(
               "Charge time remaining: ${(data.chargeTimeRemaining! / 1000 / 60).truncate()} minutes");
     }
-    return Text("Battery is full or not connected to a power source");
+    return Text(
+      "Battery is full or not connected to a power source",
+      style: TextStyle(
+        fontStyle: FontStyle.italic,
+        fontSize: 16,
+      ),
+    );
   }
 }
