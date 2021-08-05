@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     BatteryLevelWidget(
                       batteryLevel: snapshot.data!.batteryLevel,
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -86,18 +86,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           temperature: snapshot.data!.temperature,
                         ),
                         BatteryVoltageWidget(voltage: snapshot.data!.voltage),
-                        SizedBox(
-                          height: 16,
-                        ),
                       ],
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     _getChargeTime(snapshot.data),
                     SizedBox(height: 16),
                   ],
                 );
               }
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             },
           ),
         ),
@@ -108,14 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getChargeTime(AndroidBatteryInfo? data) {
     if (data!.chargingStatus == ChargingStatus.Charging) {
       return data.chargeTimeRemaining == -1
-          ? Container(child: Text("Calculating charge time remaining"))
+          ? Container(child: const Text("Calculating charge time remaining"))
           : Container(
               child: Text(
                   "Charge time remaining: ${(data.chargeTimeRemaining! / 1000 / 60).truncate()} minutes"),
             );
     }
     return Container(
-      child: Text(
+      child: const Text(
         "Battery is full or not connected to a power source",
         style: TextStyle(
           fontStyle: FontStyle.italic,

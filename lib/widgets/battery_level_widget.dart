@@ -6,8 +6,6 @@ class BatteryLevelWidget extends StatelessWidget {
   final batteryLevel;
 
   Widget build(BuildContext context) {
-    final double _sw = MediaQuery.of(context).size.width;
-
     Color barColor = Colors.green;
     if (batteryLevel! >= 50) {
       barColor = Colors.green;
@@ -22,13 +20,13 @@ class BatteryLevelWidget extends StatelessWidget {
       height: 200,
       child: Column(
         children: [
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'Current battery level',
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontFamily: 'Montserrat'),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: SfLinearGauge(
@@ -44,10 +42,10 @@ class BatteryLevelWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           Text(
             '${batteryLevel.toString()}%',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 64,
               fontFamily: 'Montserrat',
             ),

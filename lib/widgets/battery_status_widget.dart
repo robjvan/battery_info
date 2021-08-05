@@ -9,6 +9,7 @@ class BatteryStatusWidget extends StatelessWidget {
   final String chargingStatus;
   final String powerSource;
   final int? batteryLevel;
+
   @override
   Widget build(BuildContext context) {
     final double _sw = MediaQuery.of(context).size.width;
@@ -19,12 +20,12 @@ class BatteryStatusWidget extends StatelessWidget {
       height: 200,
       child: Column(
         children: [
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'Charging Status',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             chargingStatus,
             style: TextStyle(
@@ -32,14 +33,14 @@ class BatteryStatusWidget extends StatelessWidget {
               color: powerSource == "Battery" ? Colors.red : Colors.green,
             ),
           ),
-          SizedBox(height: 16),
-          Text(
+          const SizedBox(height: 16),
+          const Text(
             'Power source',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(powerSource),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Icon(
             powerSource == "Battery"
                 ? batteryLevel! > 15

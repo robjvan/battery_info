@@ -36,14 +36,14 @@ class BatteryHealthWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Estimated capacity',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Montserrat',
                 ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               GestureDetector(
                 child: Icon(
                   Icons.info_outline,
@@ -79,7 +79,7 @@ class BatteryHealthWidget extends StatelessWidget {
                             },
                           )
                         ],
-                        content: Text(
+                        content: const Text(
                           'This is an estimate and may not be accurate.  Do not use this app as proof for service requests.',
                           style: TextStyle(fontFamily: 'Montserrat'),
                         ),
@@ -90,32 +90,32 @@ class BatteryHealthWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 '$capacity ',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 32,
                   fontFamily: 'Montserrat',
                 ),
               ),
-              Text(
+              const Text(
                 'mAh',
                 style: TextStyle(fontFamily: 'Montserrat'),
               ),
             ],
           ),
           Spacer(),
-          Text(
+          const Text(
             'Overall health',
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontFamily: 'Montserrat',
             ),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             '$_healthString',
             style: TextStyle(

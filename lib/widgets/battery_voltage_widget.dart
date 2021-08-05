@@ -17,7 +17,7 @@ class BatteryVoltageWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0),
         child: SfRadialGauge(
-          title: GaugeTitle(
+          title: const GaugeTitle(
             text: 'Current voltage',
             textStyle: TextStyle(
               fontWeight: FontWeight.bold,
