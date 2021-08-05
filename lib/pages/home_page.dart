@@ -42,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Container(
           height: _sh,
           width: _sw,
+          // color: Colors.green,
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: StreamBuilder<AndroidBatteryInfo?>(
             stream: BatteryInfoPlugin().androidBatteryInfoStream,
@@ -49,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 AsyncSnapshot<AndroidBatteryInfo?> snapshot) {
               if (snapshot.hasData) {
                 return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     BatteryLevelWidget(
                       batteryLevel: snapshot.data!.batteryLevel,
@@ -90,13 +91,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 16),
                     _getChargeTime(snapshot.data),
-                    SizedBox(
-                      height: 8,
-                    ),
+                    SizedBox(height: 16),
                   ],
                 );
               }
@@ -111,15 +108,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _getChargeTime(AndroidBatteryInfo? data) {
     if (data!.chargingStatus == ChargingStatus.Charging) {
       return data.chargeTimeRemaining == -1
-          ? Text("Calculating charge time remaining")
-          : Text(
-              "Charge time remaining: ${(data.chargeTimeRemaining! / 1000 / 60).truncate()} minutes");
+          ? Container(child: Text("Calculating charge time remaining"))
+          : Container(
+              child: Text(
+                  "Charge time remaining: ${(data.chargeTimeRemaining! / 1000 / 60).truncate()} minutes"),
+            );
     }
-    return Text(
-      "Battery is full or not connected to a power source",
-      style: TextStyle(
-        fontStyle: FontStyle.italic,
-        fontSize: 16,
+    return Container(
+      child: Text(
+        "Battery is full or not connected to a power source",
+        style: TextStyle(
+          fontStyle: FontStyle.italic,
+          fontSize: 16,
+        ),
       ),
     );
   }
