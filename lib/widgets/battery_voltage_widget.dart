@@ -66,7 +66,7 @@ class BatteryVoltageWidget extends StatelessWidget {
                 annotations: <GaugeAnnotation>[
                   GaugeAnnotation(
                     widget: Container(
-                      child: Text('${voltage! / 1000} v'),
+                      child: Text('${voltage! / 1000} V'),
                     ),
                     angle: 90,
                     positionFactor: 0.8,

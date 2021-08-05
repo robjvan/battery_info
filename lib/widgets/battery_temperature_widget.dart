@@ -70,7 +70,7 @@ class BatteryTemperatureWidget extends StatelessWidget {
                 annotations: <GaugeAnnotation>[
                   GaugeAnnotation(
                     widget: Container(
-                      child: Text('$temperature C'),
+                      child: Text('$temperature °C'),
                     ),
                     angle: 90,
                     positionFactor: 0.8,
