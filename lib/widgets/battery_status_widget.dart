@@ -16,7 +16,7 @@ class BatteryStatusWidget extends StatelessWidget {
     // half-width container
     return Container(
       width: (_sw / 2) - 24,
-      height: (_sw / 2) - 24,
+      height: 200,
       child: Column(
         children: [
           SizedBox(height: 16),

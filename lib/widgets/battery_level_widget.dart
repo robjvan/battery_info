@@ -19,7 +19,7 @@ class BatteryLevelWidget extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: (_sw / 2) - 24,
+      height: 200,
       child: Column(
         children: [
           SizedBox(height: 16),

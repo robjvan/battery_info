@@ -28,7 +28,8 @@ class BatteryHealthWidget extends StatelessWidget {
 
     return Container(
       width: (_sw / 2) - 24,
-      height: (_sw / 2) - 24,
+      height: 200,
+      // height: (_sw / 2) - 24,
       child: Column(
         children: [
           Spacer(),
