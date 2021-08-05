@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 AsyncSnapshot<AndroidBatteryInfo?> snapshot) {
               if (snapshot.hasData) {
                 return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     BatteryLevelWidget(
                       batteryLevel: snapshot.data!.batteryLevel,
