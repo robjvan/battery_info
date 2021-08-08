@@ -10,19 +10,13 @@ This app can help by showing your battery health, estimated capacity, voltage, a
 
 ## Features
 
-<br>
-
 ### **Informative**
 
 Shows a variety of useful metrics.
 
-<br>
-
 ### **Realtime**
 
 See infomation update in realtime as it happens inside your device.
-
-<br>
 
 ### **Themes**
 
